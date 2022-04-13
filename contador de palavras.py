@@ -16,7 +16,7 @@ def contarPalavras():
         print(i, ordem[i])
 def pegarLegenda(link):
     from youtube_transcript_api import YouTubeTranscriptApi 
-    link= YouTubeTranscriptApi.get_transcript((link.split('?v='))[1])
+    link= YouTubeTranscriptApi.get_transcript((link.split('?v='))[1],languages=['en'])
     for _ in link:
         i = _['text']+','
         adicionarPalavras(i)
