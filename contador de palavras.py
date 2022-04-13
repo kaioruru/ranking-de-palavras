@@ -14,9 +14,31 @@ def contarPalavras():
             ordem.update({_:word})
     for i in sorted(ordem, key = ordem.get):
         print(i, ordem[i])
+def pegarLegenda(link):
+    from youtube_transcript_api import YouTubeTranscriptApi 
+    link= YouTubeTranscriptApi.get_transcript((link.split('?v='))[1])
+    for _ in link:
+        i = _['text']+','
+        adicionarPalavras(i)
+pegarLegenda('https://www.youtube.com/watch?v=pqh4LfPeCYs')  
+print('-='*20,'\n1-adicionar um texto\n2-adicionar a legenda de um video\n3-consultar palavras')
+x = int(input('>>'))
 while True:
-    adicionarPalavras(str(input('frase: ')))
-    contarPalavras()
-    x = str(input('que digitar mais frases (S/N): ')).upper()
-    if x == 'N':
-        break
+    if x == 1:
+        texto = str(input('digite o seu texto:  '))
+        adicionarPalavras(texto)
+        print('-='*20,'\n1-adicionar um texto\n2-adicionar a legenda de um video\n3-consultar palavras')
+        x = int(input('>>'))
+    elif x == 2:
+        link = str(input('digite o link: '))
+        pegarLegenda(link)
+        print('-='*20,'\n1-adicionar um texto\n2-adicionar a legenda de um video\n3-consultar palavras')
+        x = int(input('>>'))
+    elif x == 3:
+        contarPalavras()
+        print('-='*20,'\n1-adicionar um texto\n2-adicionar a legenda de um video\n3-consultar palavras')
+        x = int(input('>>'))
+    else:
+        x = str(input('que continuar no progama?(S/N):  '))
+        if x == 'N':
+            break
