@@ -20,7 +20,6 @@ def pegarLegenda(link):
     for _ in link:
         i = _['text']+','
         adicionarPalavras(i)
-pegarLegenda('https://www.youtube.com/watch?v=pqh4LfPeCYs')  
 print('-='*20,'\n1-adicionar um texto\n2-adicionar a legenda de um video\n3-consultar palavras')
 x = int(input('>>'))
 while True:
